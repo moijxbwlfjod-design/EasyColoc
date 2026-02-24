@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->integer('mount');
             $table->foreignId('category_id')->constrained('categories', 'id')->onDelete('cascade');
-            $table->foreignId('colocalation_id')->constrained()->onDelete('cascade');
+            $table->foreignId('colocalation_id')->constrained('colocations', 'id')->onDelete('cascade');
             $table->timestamps();
         });
     }

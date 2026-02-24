@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('gender', ['male', 'female']);
             $table->foreignId('role_id')->constrained()->onDelete('cascade');
             $table->foreignId('colocation_role_id')->constrained('colocation_roles', 'id')->onDelete('cascade');
             $table->rememberToken();
