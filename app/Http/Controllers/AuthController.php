@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -17,11 +19,12 @@ class AuthController extends Controller
             'password' => 'required|min:8'
         ]);
 
-        if (Auth::attemp(['email' => $request->email, 'password' => $request->password])){
-            $user = User::where('email', $request->email);
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+            $user = User::where('email', $request->email)->first();
             Auth::login($user);
-            return redirect()->view('....');
+            return view('pages.home');
+            //return "Hello after login";
         }
-        return back()-withErrors(['error' => 'User not found']);
+        return back()->withErrors(['error' => 'User not found']);
     }
 }

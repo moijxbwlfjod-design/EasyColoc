@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\ColocationRole;
 
 class ColocationRoleSeeder extends Seeder
 {
@@ -12,6 +13,8 @@ class ColocationRoleSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        ColocationRole::firstOrCreate(['name' => 'without colocation']);
+        ColocationRole::firstOrCreate(['name' => 'owner']);
+        ColocationRole::firstOrCreate(['name' => 'member']);
     }
 }
