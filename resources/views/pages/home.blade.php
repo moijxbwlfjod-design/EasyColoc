@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello here after login</h1>
+    <h1>Hello here after login & register</h1>
 </body>
 </html>

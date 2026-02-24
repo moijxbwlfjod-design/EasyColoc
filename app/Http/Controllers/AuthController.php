@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Role;
+use App\Models\ColocationRole;
 
 class AuthController extends Controller
 {
@@ -26,5 +29,28 @@ class AuthController extends Controller
             //return "Hello after login";
         }
         return back()->withErrors(['error' => 'User not found']);
+    }
+
+    public function register_ui(){
+        return view('auth.register.register');
+    }
+
+    public function register(Request $request){
+        $validation = $request->validate([
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+            'gender' => 'required|in:male,female'
+        ]);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'gender' => $request->gender,
+            'role_id' => Role::where('name', 'user')->value('id'),
+            'colocation_role_id' => ColocationRole::where('name', 'without colocation')->value('id')
+        ]);
+        Auth::login($user);
+        return view('pages.home');
     }
 }
