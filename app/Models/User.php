@@ -45,4 +45,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
+
+    public function colocationRole(){
+        return $this->belongsTo(ColocationRole::class);
+    }
+
+    public function colocation(){
+        return $this->HasOne(Colocation::class);
+    }
 }
