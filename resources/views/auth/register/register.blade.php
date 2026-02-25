@@ -25,7 +25,7 @@
                 <span>{{ $errors->first() }}</span>
             @endif
             <div class="btn">
-                <button type="submit">Login</button>
+                <button type="submit">Create account</button>
             </div>
             <p>Already <a href="{{ route('login') }}">have an account?</a></p>
         </form>
