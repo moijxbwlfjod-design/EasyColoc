@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class ColocationController extends Controller
 {
-    //
+    public function create(Request $request){
+        
+    }
 }

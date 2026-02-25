@@ -16,10 +16,6 @@ class Colocation extends Model
         'status'
     ];
 
-    public function house(){
-        return $this->belongsTo(House::class);
-    }
-
     public function owner(){
         return $this->BelongsTo(User::class, 'id');
     }
