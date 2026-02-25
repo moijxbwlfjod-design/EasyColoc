@@ -14,8 +14,8 @@ class Colocation extends Model
         'title',
         'description',
         'image_path',
+        'location',
         'slug',
-        'house_id',
         'owner_id',
         'status'
     ];

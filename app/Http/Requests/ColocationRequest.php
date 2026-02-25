@@ -28,8 +28,8 @@ class ColocationRequest extends FormRequest
             'title' => 'required|min:3',
             'description' => 'required|min:10',
             'image' => 'required|image|max:10240',
+            'location' => 'required|min:5',
             'owner_id' => 'required|exists:users,id',
-            'house_id' => 'required|exists:houses,id',
             'status' => 'required|in:active,canceled',
         ];
     }

@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ColocationController extends Controller
 {
+
+    public function index(){
+        return view('pages.colocation.create');
+    }
+
     public function create(ColocationRequest $request){
         if (Auth::User()->colocation_role->name == 'owner') return back()->withErrors(['error' => 'As owner you can\'t create a new colocation']);
         $validation = $request->validate();
@@ -20,7 +25,7 @@ class ColocationController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'image_path' => public_path("/colocations/{$slug}"),
-            'house_id' => $request->house_id,
+            'location' => $request->location,
             'owner_id' => $request->owner_id,
             'status' => $request->status,
         ]);
