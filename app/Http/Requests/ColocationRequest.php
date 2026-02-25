@@ -27,7 +27,7 @@ class ColocationRequest extends FormRequest
         return [
             'title' => 'required|min:3',
             'description' => 'required|min:10',
-            'image_path' => 'required|image|max:10240',
+            'image' => 'required|image|max:10240',
             'owner_id' => 'required|exists:users,id',
             'house_id' => 'required|exists:houses,id',
             'status' => 'required|in:active,canceled',

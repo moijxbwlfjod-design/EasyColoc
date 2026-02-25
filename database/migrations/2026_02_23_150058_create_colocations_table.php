@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('image_path');
+            $table->string('slug');
             $table->foreignId('owner_id')->constrained('users', 'id')->onDelete('cascade');
             $table->foreignId('house_id')->constrained('houses', 'id')->onDelete('cascade');
             $table->enum('status', ['active', 'canceled']);
