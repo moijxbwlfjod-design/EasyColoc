@@ -11,6 +11,10 @@ class Colocation extends Model
     use HasFactory;
 
     protected $fillable = [
+        'title',
+        'description',
+        'image_path',
+        'slug',
         'house_id',
         'owner_id',
         'status'
