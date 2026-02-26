@@ -27,10 +27,8 @@ class ColocationRequest extends FormRequest
         return [
             'title' => 'required|min:3',
             'description' => 'required|min:10',
-            'image' => 'required|image|max:10240',
+            'image' => 'required|image|max:10240|mimes:png',
             'location' => 'required|min:5',
-            'owner_id' => 'required|exists:users,id',
-            'status' => 'required|in:active,canceled',
         ];
     }
 }
