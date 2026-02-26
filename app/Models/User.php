@@ -24,6 +24,7 @@ class User extends Authenticatable
         'gender',
         'role_id',
         'colocation_role_id',
+        'rate'
     ];
 
     /**
@@ -58,6 +59,6 @@ class User extends Authenticatable
     }
 
     public function colocation(){
-        return $this->HasOne(Colocation::class);
+        return $this->HasOne(Colocation::class, 'owner_id', 'id');
     }
 }
