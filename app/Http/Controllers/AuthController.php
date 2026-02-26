@@ -32,7 +32,7 @@ class AuthController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $user = User::where('email', $request->email)->first();
             Auth::login($user);
-            return view('pages.colocation.home', compact('user'));
+            return view('pages.colocation.home', ['user' => $user, 'colocation' => $user->colocation]);
             //return "Hello after login";
         }
         return back()->withErrors(['error' => 'User not found']);

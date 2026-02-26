@@ -27,7 +27,7 @@ class ColocationController extends Controller
         $colocation::create([
             'title' => $request->title,
             'description' => $request->description,
-            'image_path' => public_path("/colocations/{$slug}"),
+            'image_path' => "/colocations_images/{$slug}.png",
             'location' => $request->location,
             'slug' => $slug,
             'owner_id' => Auth::User()->id,
