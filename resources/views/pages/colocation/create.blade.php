@@ -8,7 +8,8 @@
 </head>
 <body>
     <main>
-        <form action="{{ route('colocation.create') }}" method="POST" enctype="multipart/form-data">
+        <a href="{{ route('home.index') }}">Back</a>
+        <form action="{{ route('home.colocation.create') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <label for="title">Title:</label><br>
             <input required name="title" type="text" id="title"><br><br>
@@ -21,7 +22,6 @@
             <div class="btn">
                 <button type="submit">Create Colocation</button>
             </div>
-            <a href="{{ route('') }}"></a>
             @if (session('msg'))
                 <div>
                     <h3>

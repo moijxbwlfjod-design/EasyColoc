@@ -331,14 +331,24 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property mixed $status
-     * @property mixed $house_id
      * @property mixed $owner_id
+     * @property string $slug
+     * @property string $location
+     * @property string $image_path
+     * @property string $description
+     * @property string $title
      * @property int $id
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ColocationMember> $members
      * @property-read int|null $members_count
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Expense> $expenses
+     * @property-read int|null $expenses_count
      * @method static \Illuminate\Database\Eloquent\Builder<Colocation>|Colocation whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Colocation>|Colocation whereTitle($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Colocation>|Colocation whereDescription($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Colocation>|Colocation whereImagePath($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Colocation>|Colocation whereLocation($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Colocation>|Colocation whereSlug($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Colocation>|Colocation whereOwnerId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Colocation>|Colocation whereHouseId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Colocation>|Colocation whereStatus($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Colocation>|Colocation whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Colocation>|Colocation whereUpdatedAt($value)
@@ -1311,7 +1321,7 @@ namespace App\Models {
      *
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
-     * @property mixed $colocalation_id
+     * @property mixed $colocation_id
      * @property mixed $category_id
      * @property mixed $mount
      * @property string $title
@@ -1322,7 +1332,7 @@ namespace App\Models {
      * @method static \Illuminate\Database\Eloquent\Builder<Expense>|Expense whereTitle($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Expense>|Expense whereMount($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Expense>|Expense whereCategoryId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Expense>|Expense whereColocalationId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Expense>|Expense whereColocationId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Expense>|Expense whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Expense>|Expense whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Expense>|Expense newModelQuery()
@@ -2301,6 +2311,7 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property string|null $remember_token
+     * @property mixed $rate
      * @property mixed $colocation_role_id
      * @property mixed $role_id
      * @property mixed $gender
@@ -2321,6 +2332,7 @@ namespace App\Models {
      * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereGender($value)
      * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereRoleId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereColocationRoleId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereRate($value)
      * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereRememberToken($value)
      * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereUpdatedAt($value)
