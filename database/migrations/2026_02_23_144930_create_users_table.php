@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('gender', ['male', 'female']);
             $table->foreignId('role_id')->constrained()->onDelete('cascade');
             $table->foreignId('colocation_role_id')->constrained('colocation_roles', 'id')->onDelete('cascade');
+            $table->integer('rate')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
