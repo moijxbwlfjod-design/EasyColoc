@@ -17,7 +17,7 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="main flex justify-center items-center bg-gray-200 h-[100vh]">
         @yield('main')
     </main>
 </body>
