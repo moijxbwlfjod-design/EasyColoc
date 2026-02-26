@@ -13,7 +13,10 @@ use App\Models\ColocationRole;
 class AuthController extends Controller
 {
     public function index(){
-        return view('pages.home');
+        $user = Auth::User();
+        $colocation = $user->colocation;
+        if($colocation) return view('pages.colocation.home', compact('user', 'colocation'));
+        return view('pages.colocation.home', compact('user'));
     }
 
     public function login_ui(){
@@ -29,7 +32,7 @@ class AuthController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $user = User::where('email', $request->email)->first();
             Auth::login($user);
-            return view('pages.home');
+            return view('pages.colocation.home', compact('user'));
             //return "Hello after login";
         }
         return back()->withErrors(['error' => 'User not found']);
@@ -46,15 +49,17 @@ class AuthController extends Controller
             'password' => 'required|min:8',
             'gender' => 'required|in:male,female'
         ]);
+        if(count(User::all()) == 0) $role_id = Role::where('name', 'admin')->value('id');
+        else $role_id = Role::where('name', 'user')->value('id');
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'gender' => $request->gender,
-            'role_id' => Role::where('name', 'user')->value('id'),
+            'role_id' => $role_id,
             'colocation_role_id' => ColocationRole::where('name', 'without colocation')->value('id')
         ]);
         Auth::login($user);
-        return view('pages.home');
+        return view('pages.colocation.home', compact('user'));
     }
 }
