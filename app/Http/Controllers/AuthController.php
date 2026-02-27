@@ -62,4 +62,11 @@ class AuthController extends Controller
         Auth::login($user);
         return view('pages.colocation.home', compact('user'));
     }
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('home')->with('msg', 'You are logged out!');
+    }
 }
