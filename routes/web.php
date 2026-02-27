@@ -6,7 +6,7 @@ use App\Http\Controllers\ColocationController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 
 Route::prefix('login')->name('login')->group(function(){
