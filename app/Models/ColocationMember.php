@@ -19,7 +19,7 @@ class ColocationMember extends Model
         return $this->belongsToMany(Colocation::class);
     }
 
-    public function member(){
+    public function members(){
         return $this->belongsToMany(User::class, 'id', 'users');
     }
 }
