@@ -10,9 +10,9 @@ class ColocationMemberController extends Controller
 {
     public static function create(ColocationMemberRequest $request){
         $validation = $request->validated();
-        ColocationMember::create([
-            'colocation_id' => $request->colocation_id,
-            'member_id' => $request->member_id
-        ]);
+        // ColocationMember::create([
+        //     'colocation_id' => $request->colocation_id,
+        //     'member_id' => $request->member_id
+        // ]);
     }
 }

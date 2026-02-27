@@ -9,12 +9,14 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Role;
 use App\Models\ColocationRole;
+use App\Models\ColocationMember;
 
 class AuthController extends Controller
 {
     public function index(){
         $user = Auth::User();
-        $colocation = $user->colocation;
+        $colocation = $user->colocations[count($user->colocations) - 1];
+        //$members = ColocationMember::where();
         if($colocation) return view('pages.colocation.home', compact('user', 'colocation'));
         return view('pages.colocation.home', compact('user'));
     }
@@ -32,7 +34,7 @@ class AuthController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $user = User::where('email', $request->email)->first();
             Auth::login($user);
-            return view('pages.colocation.home', ['user' => $user, 'colocation' => $user->colocation]);
+            return view('pages.colocation.home', ['user' => $user, 'colocation' => $user->colocations[count($user->colocations) - 1]]);
             //return "Hello after login";
         }
         return back()->withErrors(['error' => 'User not found']);

@@ -25,7 +25,8 @@ class ColocationMemberRequest extends FormRequest
     {
         return [
             'colocation_id' => 'required|exists:colocations,id',
-            'member_id' => 'required|exists:users,id'
+            'member_id' => 'required|exists:users,id',
+            'member_name' => 'required|exists:users,name'
         ];
     }
 }
