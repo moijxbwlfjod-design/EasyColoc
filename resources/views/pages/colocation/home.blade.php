@@ -1,6 +1,6 @@
 @extends('pages.layouts.dashboard_layout')
 @section('main')
-<div class="container bg-[white] rounded-[10px] flex justify-around wrap gap-[10%] py-[10px] px-[20px]">
+<div class="container bg-[#0a9396] rounded-[10px] flex justify-around wrap gap-[10%] py-[10px] px-[20px]">
     <div class="rate__container bg-gray-100 py-[5px] px-[10px]">
         <h3 class="text-gray-600">Your Rate is:</h3>
         <p class="text-gray-600">{{ $user->rate }}</p>
@@ -33,9 +33,8 @@
     @endif
 
     @if (isset($colocation))
-        <div class="colocation_members__container py-[10px] px-[20px] rounded-[10px] bg-red-100">
-            <h3 class="text-red-600">Colocation Members are:</h3>
-            <pa class="text-red-600">{{ $colocation->expenses }}</p>
+        <div class="colocation_members__container py-[10px] px-[20px] rounded-[10px] bg-black">
+            <h3 class="text-yellow-600">{{ $colocation->title }} Members are</h3>
         </div>
     @else
         <div class="colocation_members__container py-[10px] px-[20px] rounded-[10px] bg-gray-100">
