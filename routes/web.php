@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ColocationController;
+use App\Http\Controllers\InvitationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,6 +27,11 @@ Route::middleware('auth')->prefix('home')->name('home.')->group(function(){
     Route::prefix('colocation')->name('colocation.')->group(function(){
         Route::get('/', [ColocationController::class, 'index'])->name('index');
         Route::post('/', [ColocationController::class, 'create'])->name('create');
+    });
+
+    Route::prefix('invite')->name('invite.')->group(function () {
+        Route::get('/', [InvitationController::class, 'index'])->name('index');
+        Route::post('/', [InvitationController::class, 'create'])->name('create');
     });
 });
 
