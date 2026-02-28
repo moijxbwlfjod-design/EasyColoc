@@ -33,5 +33,9 @@ Route::middleware('auth')->prefix('home')->name('home.')->group(function(){
         Route::get('/', [InvitationController::class, 'index'])->name('index');
         Route::post('/', [InvitationController::class, 'create'])->name('create');
     });
+
+    Route::prefix('category')->name('category.')->group(function(){
+        Route::post('/', [CategoryController::class, 'create'])->name('create');
+    });
 });
 
