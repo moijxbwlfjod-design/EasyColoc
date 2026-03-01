@@ -58,7 +58,7 @@ class User extends Authenticatable
         return $this->belongsTo(ColocationRole::class);
     }
 
-    public function colocation(){
-        return $this->HasOne(Colocation::class, 'owner_id', 'id');
+    public function colocations(){
+        return $this->belongsToMany(Colocation::class, 'colocation_members')->withPivot('colocation_role_id', 'lefted_at')->withTimestamps();
     }
 }

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Role;
 use App\Models\ColocationRole;
 use App\Models\ColocationMember;
+use App\Models\Category;
 
 class AuthController extends Controller
 {
@@ -17,7 +18,7 @@ class AuthController extends Controller
         $user = Auth::User();
         $colocation = $user->colocations[count($user->colocations) - 1];
         //$members = ColocationMember::where();
-        if($colocation) return view('pages.colocation.home', compact('user', 'colocation'));
+        if($colocation) return view('pages.colocation.home', ['user' => $user, 'colocation' => $colocation, 'categories' => Category::all()]);
         return view('pages.colocation.home', compact('user'));
     }
 
@@ -34,7 +35,7 @@ class AuthController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $user = User::where('email', $request->email)->first();
             Auth::login($user);
-            return view('pages.colocation.home', ['user' => $user, 'colocation' => $user->colocations[count($user->colocations) - 1]]);
+            return view('pages.colocation.home', ['user' => $user, 'colocation' => $user->colocations[count($user->colocations) - 1], 'categories' => Category::all()]);
             //return "Hello after login";
         }
         return back()->withErrors(['error' => 'User not found']);
