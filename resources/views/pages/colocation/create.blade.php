@@ -1,26 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <main>
-        <a href="{{ route('home.index') }}">Back</a>
+@extends('pages.layouts.dashboard_layout')
+@section('main')
+    <div class="card bg-white py-[15px] px-[20px] rounded-[15px]">
+        {{-- <a href="{{ route('home.index') }}">Back</a> --}}
         <form action="{{ route('home.colocation.create') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <label for="title">Title:</label><br>
-            <input required name="title" type="text" id="title"><br><br>
+            <input class="bg-gray-100 rounded-[8px] mt-[5px]" required name="title" type="text" id="title"><br><br>
             <label for="description">Description:</label><br>
-            <textarea required name="description" id="description" cols="30" rows="10"></textarea><br><br>
+            <textarea class="bg-gray-100 rounded-[8px] mt-[5px]" required name="description" id="description" cols="30" rows="10"></textarea><br><br>
             <label for="image">Colocation Image:</label><br>
-            <input required type="file" accept=".png" name="image"><br><br>
+            <input class="bg-gray-100 rounded-[8px] mt-[5px]" required type="file" accept=".png" name="image"><br><br>
             <label for="location">Location:</label><br>
-            <input required type="text" id="location" name="location"><br><br>
-            <div class="btn">
-                <button type="submit">Create Colocation</button>
+            <input class="bg-gray-100 rounded-[8px] mt-[5px]" required type="text" id="location" name="location"><br><br>
+            <div class="btn flex justify-center items-center">
+                <button class="bg-[#0a9396] text-white rounded-[12px] py-[5px] px-[10px]" type="submit">Create Colocation</button>
             </div>
             @if (session('msg'))
                 <div>
@@ -37,6 +30,5 @@
                 </div>
             @endif
         </form>
-    </main>
-</body>
-</html>
+    </div>
+@endsection
