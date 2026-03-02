@@ -24,7 +24,8 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|min:5'
+            'title' => 'required|min:5',
+            'colocation_id' => 'required|exists:colocations,id'
         ];
     }
 }
