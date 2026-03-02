@@ -35,6 +35,7 @@ Route::middleware('auth')->prefix('home')->name('home.')->group(function(){
     });
 
     Route::prefix('category')->name('category.')->group(function(){
+        Route::get('/', [CategoryController::class, 'index'])->name('index');
         Route::post('/', [CategoryController::class, 'create'])->name('create');
     });
 });
