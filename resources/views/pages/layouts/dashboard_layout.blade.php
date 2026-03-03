@@ -13,7 +13,7 @@
             <ul class="flex justify-around bg-[#94d2bd] px-[5px] py-[10px] w-[80%] rounded-[24px]">
                 <li><a class="hover:text-[#005f73] text-white text-[34px]" href="{{ route('home.index') }}" class="decoration-none text-none">Current Colocation</a></li>
                 <li><a class="hover:text-[#005f73] text-white text-[34px]" href="{{ route('home.colocation.index') }}" class="decoration-none text-none">Create Colocation</a></li>
-                <li><a class="hover:text-[#005f73] text-white text-[34px]" href="#" class="decoration-none text-none">Expenses</a></li>
+                <li><a class="hover:text-[#005f73] text-white text-[34px]" href="{{ route('home.expense.index') }}" class="decoration-none text-none">Expenses</a></li>
                 <li><a class="hover:text-[#005f73] text-white text-[34px]" href="{{ route('home.invite.index') }}" class="decoration-none text-none">Invite Member</a></li>
             </ul>
         </nav>
