@@ -30,7 +30,7 @@
             </div>
 
             <div id="colocation-expenses-div" class="colocation-expenses-div">
-                @if (isset($colocation) && $colocation->expenses->isNotEmpty())
+                @if (isset($colocation) && count($colocation->expenses) > 0)
                     @foreach ($colocation->expenses as $expense)
                         <p>Title: {{ $expense->title }} | Price: {{ $expense->mount }}</p>
                     @endforeach
@@ -39,10 +39,10 @@
                 @endif
             </div>
 
-            <div id="wallet-div" class="wallet-div bg-red-500">
-                @if (isset($user_expenses) && $user_expenses->isNotEmpty())
+            <div id="wallet-div" class="wallet-div">
+                @if (isset($colocation) && count($colocation->expenses) > 0)
                     @foreach ($user_expenses as $user_expense)
-                        <p>{{ $user_expense-> }}</p>
+                        <p>Mount to pay: {{ $user_expense->mount_to_pay }} | Status: {{ $user_expense->status }}</p>
                     @endforeach
                 @endif
             </div>

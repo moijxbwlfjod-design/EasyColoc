@@ -23,7 +23,7 @@
 
             <div class="categories__container rounded-[10px] bg-white py-[5px] px-[10px] flex flex-col gap-[10px] items-center">
                 <div class="categories rounded-[10px] bg-gray-100 overflow-auto py-[3px] px-[7px] w-[90%]">
-                    @foreach ($categories as $category)
+                    @foreach ($colocation->categories as $category)
                         <p>{{ $category->title }}</p>
                     @endforeach
                 </div>
