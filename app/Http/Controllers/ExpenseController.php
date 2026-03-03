@@ -12,8 +12,8 @@ class ExpenseController extends Controller
 {
     public function index(){
         $user = Auth::user();
-        $colocation = $user->colocations[count($user->colocations) - 1];
-        $user_expenses = ExpensePayer::where('payer_id', $user->id);
+        $colocation = $user->colocations()->latest()->first();
+        $user_expenses = ExpensePayer::where('payer_id', $user->id)->get();
         return view('pages.expenses.index', ['categories' => $user->colocations[count($user->colocations) - 1]->categories, 'colocation' => $colocation, 'user_expenses' => $user_expenses]);
     }
 

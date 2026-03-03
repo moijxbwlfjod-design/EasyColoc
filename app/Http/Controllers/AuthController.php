@@ -12,14 +12,18 @@ use App\Models\ColocationRole;
 use App\Models\ColocationMember;
 use App\Models\Category;
 
+use function PHPUnit\Framework\isEmpty;
+
 class AuthController extends Controller
 {
     public function index(){
         $user = Auth::User();
-        $colocation = $user->colocations[count($user->colocations) - 1];
-        //$members = ColocationMember::where();
-        if($colocation) return view('pages.colocation.home', ['user' => $user, 'colocation' => $colocation, 'categories' => Category::all()]);
-        return view('pages.colocation.home', compact('user'));
+        $colocation = $user->colocations()->latest()->first();
+        if($colocation != null){
+            if(isEmpty($colocation->categories)) return view('pages.colocation.home', ['user' => $user, 'colocation' => $colocation]);
+            return view('pages.colocation.home', ['user' => $user, 'colocation' => $colocation, 'categories' => $colocation->categories]);
+        }
+        return view('pages.colocation.home', ['user' => $user]);
     }
 
     public function login_ui(){
@@ -35,8 +39,12 @@ class AuthController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $user = User::where('email', $request->email)->first();
             Auth::login($user);
-            return route('home.index', ['user' => $user, 'colocation' => $user->colocations[count($user->colocations) - 1], 'categories' => Category::all()]);
-            //return "Hello after login";
+            // $colocation = $user->colocations()->latest()->first();
+            // if($colocation != null){
+            //     if(isEmpty($colocation->categories)) return redirect()->route('home.index', ['user' => $user, 'colocation' => $colocation]);
+            //     return redirect()->route('home.index', ['user' => $user, 'colocation' => $colocation, 'categories' => $colocation->categories]);
+            // }
+            return redirect()->route('home.index');
         }
         return back()->withErrors(['error' => 'User not found']);
     }
@@ -63,7 +71,7 @@ class AuthController extends Controller
             'colocation_role_id' => ColocationRole::where('name', 'without colocation')->value('id')
         ]);
         Auth::login($user);
-        return route('home.index', compact('user'));
+        return redirect()->route('home.index', compact('user'));
     }
 
     public function logout(Request $request){
