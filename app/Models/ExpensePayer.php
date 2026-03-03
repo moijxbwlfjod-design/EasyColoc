@@ -10,7 +10,7 @@ class ExpensePayer extends Model
     /** @use HasFactory<\Database\Factories\ExpensePayerFactory> */
     use HasFactory;
 
-    protected $fillablbe = [
+    protected $fillable = [
         'expense_id',
         'payer_id',
         'mount_to_pay',
@@ -18,7 +18,7 @@ class ExpensePayer extends Model
     ];
 
     public function expenses(){
-        return $this->belongsToMany(Expense::class);
+        return $this->belongsToMany(Expense::class, 'id');
     }
 
     public function payers(){

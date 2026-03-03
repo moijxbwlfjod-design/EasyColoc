@@ -35,7 +35,7 @@ class AuthController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $user = User::where('email', $request->email)->first();
             Auth::login($user);
-            return view('pages.colocation.home', ['user' => $user, 'colocation' => $user->colocations[count($user->colocations) - 1], 'categories' => Category::all()]);
+            return route('home.index', ['user' => $user, 'colocation' => $user->colocations[count($user->colocations) - 1], 'categories' => Category::all()]);
             //return "Hello after login";
         }
         return back()->withErrors(['error' => 'User not found']);
@@ -63,7 +63,7 @@ class AuthController extends Controller
             'colocation_role_id' => ColocationRole::where('name', 'without colocation')->value('id')
         ]);
         Auth::login($user);
-        return view('pages.colocation.home', compact('user'));
+        return route('home.index', compact('user'));
     }
 
     public function logout(Request $request){
